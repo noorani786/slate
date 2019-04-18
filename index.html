@@ -1,4 +1,4 @@
-
+ 
 <!doctype html>
 <html>
   <head>
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,9 +212,6 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -228,16 +225,21 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#get-all-orders-w-o-parameters" class="toc-h2 toc-link" data-title="Get All Orders w/o parameters">Get All Orders w/o parameters</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#get-all-orders-with-parameters" class="toc-h2 toc-link" data-title="Get All Orders with parameters">Get All Orders with parameters</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#manifest" class="toc-h1 toc-link" data-title="Manifest">Manifest</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#create-manifest-with-parameters" class="toc-h2 toc-link" data-title="Create Manifest with parameters">Create Manifest with parameters</a>
                   </li>
               </ul>
           </li>
@@ -245,199 +247,561 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the SellerChamp API! You can use our API to access SellerChamp API endpoints, to pull back orders, products, inventory, marketplace prices and more.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>You can view code examples in the dark area to the right.</p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>An API Token must be called with every request.  To obtain your API Token contact us at support@sellerchamp.com</p>
+<h1 id='orders'>Orders</h1><h2 id='get-all-orders-w-o-parameters'>Get All Orders w/o parameters</h2><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -X GET <span class="se">\</span>
+  https://staging.sellerchamp.com/api/orders <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
 </code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<p>Returns back all the orders for the client object associated with the specified API Token.  Default page size is 250.</p>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p><code>Token: YOUR-TOKEN</code></p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"132886362059-1538935630003"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-07T23:02:55.533Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-14T00:10:56.000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipped"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyer_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ellis driver"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ship_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ellis driver"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1623 NC Highway 86 N"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"street2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hillsborough"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NC"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27278-7516"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c33da5a07b6203f81000887"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S11LPJMI1BZZT"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premium Rainbow Color Embroidery Floss - Cross Stitch Threads - Friendship Bra.."</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ounces"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.54</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"warehouse_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"fulfillment_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S11LPJMI1BZZT"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c1902f207b620090a000026"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"items_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.54</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyer_notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externally_fulfilled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externally_fulfilled_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+</span></code></pre><h2 id='get-all-orders-with-parameters'>Get All Orders with parameters</h2>
+<p>Returns back a list of orders that match the specified criteria. All of the available filters are optional. They do not need to be included in the URL. If you do include them, here&#39;s what the URL may look like:</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p>Url format with filters:</p>
+
+<p>/orders?buyer_name={buyer_name}
+&amp;created_at_start={created_at_start}
+&amp;created_at_end={created_at_end}
+&amp;updated_at_start={updated_at_start}
+&amp;updated_at_end={updated_at_end}
+&amp;order_number={order_number}
+&amp;order_status={order_status}
+&amp;purchased_at_start={purchased_at_start}
+&amp;purchased_at_end={purchased_at_start}
+&amp;store_id={store_id}
+&amp;sort={sort_by}
+&amp;direction={sort_direction}
+&amp;page={page}
+&amp;page_size={page_size}</p>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url <span class="s1">'https://staging.sellerchamp.com/api/orders?buyer_name={buyer_name}%0A&amp;order_number={order_number}%0A&amp;order_status={order_status}%0A&amp;purchased_at_start={purchased_at_start}%0A&amp;purchased_at_end={purchased_at_start}%0A&amp;store_id={store_id}%0A&amp;sort={sort_by}%0A&amp;direction={sort_direction}%0A&amp;page={page}%0A&amp;page_size={page_size}&amp;created_at_start={created_at_start}%0A&amp;created_at_end={created_at_end}%0A&amp;updated_at_start={updated_at_start}%0A&amp;updated_at_end={updated_at_end}%0A'</span> <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+</code></pre><h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Name</th>
+<th>Data Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>buyer_name</td>
+<td>String</td>
+<td>Returns orders that match the specified name. Example: smith.</td>
+</tr>
+<tr>
+<td>created_at_start</td>
+<td>String</td>
+<td>Returns orders that were created after the specified date Example: 2015-01-01 00:00:00.</td>
+</tr>
+<tr>
+<td>created_at_end</td>
+<td>String</td>
+<td>Returns orders that were created before the specified date Example: 2015-01-08 00:00:00.</td>
+</tr>
+<tr>
+<td>updated_at_start</td>
+<td>String</td>
+<td>Returns orders that were modified after the specified date Example: 2015-01-01 00:00:00.</td>
+</tr>
+<tr>
+<td>updated_at_end</td>
+<td>String</td>
+<td>Returns orders that were modified before the specified date Example: 2015-01-08 00:00:00.</td>
+</tr>
+<tr>
+<td>order_number</td>
+<td>String</td>
+<td>Filter by order number, performs a &quot;starts with&quot; search. Example: 12345.</td>
+</tr>
+<tr>
+<td>order_status</td>
+<td>String</td>
+<td>Filter by order status. If left empty, orders of all statuses are returned. Example: shipped</td>
+</tr>
+<tr>
+<td>purchased_at_start</td>
+<td>String</td>
+<td>Returns orders that were paid after the specified date Example: 2015-01-01</td>
+</tr>
+<tr>
+<td>purchased_at_end</td>
+<td>String</td>
+<td>Returns orders that were paid before the specified date Example: 2015-01-08</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td>Number</td>
+<td>Filters orders to a single store. Call List Stores to obtain a list of store Ids. Example: 12345.</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>String</td>
+<td>Sort the responses by a set value. The response will be sorted based off the ascending dates (oldest to most current.) If left empty, the response will be sorted by ascending order_id. Example: Order_date</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>String</td>
+<td>Sets the direction of the sort order. Example: ASC.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>String</td>
+<td>Page number Default: 1.</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>number</td>
+<td>Requested page size. Default: 250.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='manifest'>Manifest</h1><h2 id='create-manifest-with-parameters'>Create Manifest with parameters</h2>
+<p>Returns back a list of orders that match the specified criteria. All of the available filters are optional. They do not need to be included in the URL. If you do include them, here&#39;s what the URL may look like:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>Url format with filters:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p>/manifests?name={name}
+&amp;marketplace_account_id={marketplace_account_id}
+&amp;supplier_id={supplier_id}
+&amp;ship_from_address_id={ship_from_address_id}
+&amp;template_id={template_id}</p>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url <span class="s1">'https://staging.sellerchamp.com/api/manifests?name={name}&amp;marketplace_account_id={marketplace_account_id}&amp;template_id={template_id}&amp;supplier_id={supplier_id}&amp;ship_from_address_id={ship_from_address_id}'</span> <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'Postman-Token: 503de8bf-31f1-4698-b892-3b40ff28261c'</span> <span class="se">\</span>
+  --header <span class="s1">'cache-control: no-cache,no-cache'</span> <span class="se">\</span>
+  --header <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+  --data <span class="s1">'{"product_listings_attributes" : [{"asin" : "{asin}", "quantity" : "{quantity}", "item_condition" : "{item_condition}", "upc" : "{upc}", "sku" : "{sku}", "title" : "{title}", "retail_price" : "{retail_price}", "item_location" : "{item_location}", "item_category" : "{item_category}", "item_remarks" : "{item_remarks}", "brand" : "{brand}", "description" : "{description}", "features" : "{features}", "details_html" : "{details_html}", "item_specifics" : "{item_specifics}", "mpn" : "{mpn}", "listing_format" : "{listing_format}", "color" : "{color}", "manufacturer" : "{manufacturer}", "model" : "{model}", "part_number" : "{part_number}", "listing_duration" : "{listing_duration}", "store_category_external_id" : "{store_category_external_id}","store_category_2_external_id" : "{store_category_2_external_id}", "weight_in_pounds" : "{weight_in_pounds}", "package_dimensions_length" : "{package_dimensions_length}", "package_dimensions_width" : "{package_dimensions_width}", "package_dimensions_height" : "{package_dimensions_height}", "item_dimensions_length" : "{item_dimensions_length}", "item_dimensions_width" : "{item_dimensions_width}", "item_dimensions_height" : "{item_dimensions_height}", "handling_time" : "{handling_time}", "shipping_charge_type" : "{shipping_charge_type}", "global_shipping" : "{global_shipping}", "free_shipping" : "{free_shipping}", "shipping_service_code" : "{shipping_service_code}", "shipping_service_cost" : "{shipping_service_cost}", "extra_shipping_service_cost" : "{extra_shipping_service_cost}", "domestic_rate_table" : "{domestic_rate_table}", "international_shipping_service_code" : "{international_shipping_service_code}", "international_shipping_service_cost" : "{international_shipping_service_cost}", "extra_international_shipping_service_cost" : "{extra_international_shipping_service_cost}", "international_ship_to_locations" : "{international_ship_to_locations}", "international_rate_table" : "{international_rate_table}", "return_item_within" : "{return_item_within}", "refund_policy_value" : "{refund_policy_value}", "return_shipping_paid_by_value" : "{return_shipping_paid_by_value}", "qunatity_in_case" : "{qunatity_in_case}", "cost_price" : "{cost_price}", "expiration_date" : "{expiration_date}", "fnsku" : "{fnsku}", "image_urls" : [], "external_ids" : []}, {...}]}\n\n'</span>
+</code></pre><h3 id='url-parameters-2'>URL Parameters</h3>
+<p>Manifest Parameters</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type(Required)</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String(Required)</td>
+<td>Name of the Manifest. Example: 04-17-2019.</td>
+</tr>
+<tr>
+<td>supplier_id</td>
+<td>String(Optional)</td>
+<td>Supplier ID. Example: BSON::ObjectId(&#39;59e0f41007b6205968000016&#39;).</td>
+</tr>
+<tr>
+<td>ship_from_address_id</td>
+<td>String(Optional)</td>
+<td>ID of ship from address Example: BSON::ObjectId(&#39;59e0d31f07b6204cc8000000&#39;).</td>
+</tr>
+<tr>
+<td>marketplace_account_id</td>
+<td>String(Required)</td>
+<td>ID of Marketplace Account. Example: BSON::ObjectId(&#39;5c1902f207b620090a000026&#39;).</td>
+</tr>
+<tr>
+<td>template_id</td>
+<td>String(Optional)</td>
+<td>Template ID. Example: BSON::ObjectId(&#39;5c1902f207b620090a00003e&#39;)</td>
+</tr>
+</tbody></table>
+
+<p>ProductListing Parameters should be in array for multiple listing creations.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type(Required)</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asin</td>
+<td>String(Required)</td>
+<td>Listing ASIN. Example: B07G22S48Q.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Integer(Optional)</td>
+<td>Quantity of the listing. Example: 2.</td>
+</tr>
+<tr>
+<td>item_condition</td>
+<td>String(Optional)</td>
+<td>Example: [like_new, very_good, good, acceptable, refurbished, salvage] any one.</td>
+</tr>
+<tr>
+<td>upc</td>
+<td>String(Optional)</td>
+<td>Example: 883929635085</td>
+</tr>
+<tr>
+<td>sku</td>
+<td>String(Optional)</td>
+<td>SKU of the listing. Example: AB883929635085.</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String(Required)</td>
+<td>Title of the listing. Example: DCU Justice League: Throne of Atlantis Commemorative Edition (BD) [Blu-ray].</td>
+</tr>
+<tr>
+<td>retail_price</td>
+<td>Float(Optional)</td>
+<td>Retail Price of the listing. Example: 9.99</td>
+</tr>
+<tr>
+<td>color</td>
+<td>String(Optional)</td>
+<td>Example: Navy</td>
+</tr>
+<tr>
+<td>manufacturer</td>
+<td>String(Optional)</td>
+<td>Example: Charmed</td>
+</tr>
+<tr>
+<td>model</td>
+<td>String(Optional)</td>
+<td>Example: P3Q-00001</td>
+</tr>
+<tr>
+<td>part_number</td>
+<td>String(Optional)</td>
+<td>Example: LE</td>
+</tr>
+<tr>
+<td>listing_duration</td>
+<td>String(Optional)</td>
+<td>Example: gtc</td>
+</tr>
+<tr>
+<td>item_location</td>
+<td>String(Optional)</td>
+<td>Listing Location.</td>
+</tr>
+<tr>
+<td>item_category</td>
+<td>String(Optional)</td>
+<td>item_category if ebay marketplace. Example: DVDs &amp; Blu-ray Discs.</td>
+</tr>
+<tr>
+<td>item_remarks</td>
+<td>String(Optional)</td>
+<td>Example: Item will come in original packaging and includes all accessories.  Item has been tested and is in full working condition.  Comes with a 30-day warranty..</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>String(Optional)</td>
+<td>Example: Warner Manufacturing</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String(Optional)</td>
+<td>Description of the listing</td>
+</tr>
+<tr>
+<td>features</td>
+<td>String(Optional)</td>
+<td>Features of the product</td>
+</tr>
+<tr>
+<td>details_html</td>
+<td>Float(Optional)</td>
+<td>Example: <ul><li>Item Weight: 0.0 pounds</li><li>Shipping Weight: 0.0 pounds</li><li>Domestic Shipping: Item can be shipped within U.S.</li></ul></td>
+</tr>
+<tr>
+<td>item_specifics</td>
+<td>String(Optional)</td>
+<td>Example: [{&quot;name&quot;=&gt;&quot;Brand&quot;, &quot;value&quot;=&gt;&quot;Update International&quot;, &quot;source&quot;=&gt;&quot;ItemSpecific&quot;}, {&quot;name&quot;=&gt;&quot;UPC&quot;, &quot;value&quot;=&gt;&quot;793842123296&quot;, &quot;source&quot;=&gt;&quot;ItemSpecific&quot;}]</td>
+</tr>
+<tr>
+<td>mpn</td>
+<td>String</td>
+<td>Example: 90000032507</td>
+</tr>
+<tr>
+<td>listing_format</td>
+<td>String(Optional)</td>
+<td>Example: fixed_price</td>
+</tr>
+<tr>
+<td>store_category_external_id</td>
+<td>Float(Optional)</td>
+<td>Example: 64789836013</td>
+</tr>
+<tr>
+<td>store_category_2_external_id</td>
+<td>String(Optional)</td>
+<td>Example: 64789836013</td>
+</tr>
+<tr>
+<td>weight_in_pounds</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>package_dimensions_length</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>package_dimensions_width</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>package_dimensions_height</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>item_dimensions_length</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>item_dimensions_width</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>item_dimensions_height</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>handling_time</td>
+<td>Integer(Optional)</td>
+<td>Example: 1</td>
+</tr>
+<tr>
+<td>shipping_charge_type</td>
+<td>String(Optional)</td>
+<td>Example: flat</td>
+</tr>
+<tr>
+<td>global_shipping</td>
+<td>Boolean(Optional)</td>
+<td>Example: True</td>
+</tr>
+<tr>
+<td>free_shipping</td>
+<td>Boolean(Optional)</td>
+<td>Example: True</td>
+</tr>
+<tr>
+<td>shipping_service_code</td>
+<td>String(Optional)</td>
+<td>Example: ShippingMethodExpress</td>
+</tr>
+<tr>
+<td>shipping_service_cost</td>
+<td>Float(Optional)</td>
+<td>Example: 0.46</td>
+</tr>
+<tr>
+<td>extra_shipping_service_cost</td>
+<td>String(Optional)</td>
+<td>Example: 0.3</td>
+</tr>
+<tr>
+<td>domestic_rate_table</td>
+<td>Boolean(Optional)</td>
+<td>Example: False</td>
+</tr>
+<tr>
+<td>international_shipping_service_code</td>
+<td>String(Optional)</td>
+<td>Example: US_IntlEconomyShippingFromGC</td>
+</tr>
+<tr>
+<td>international_shipping_service_cost</td>
+<td>Float(Optional)</td>
+<td>Example: 0.6</td>
+</tr>
+<tr>
+<td>extra_international_shipping_service_cost</td>
+<td>Float(Optional)</td>
+<td>Example: 0.3</td>
+</tr>
+<tr>
+<td>international_ship_to_locations</td>
+<td>Array(Optional)</td>
+<td>Example: [&quot;CN&quot;, &quot;CA&quot;]</td>
+</tr>
+<tr>
+<td>international_rate_table</td>
+<td>Boolean(Optional)</td>
+<td>Example: False</td>
+</tr>
+<tr>
+<td>return_item_within</td>
+<td>Integer(Optional)</td>
+<td>Example: 7 days</td>
+</tr>
+<tr>
+<td>refund_policy_value</td>
+<td>Float(Optional)</td>
+<td>Example: Money Back</td>
+</tr>
+<tr>
+<td>return_shipping_paid_by_value</td>
+<td>String(Optional)</td>
+<td>Example: Seller</td>
+</tr>
+<tr>
+<td>cost_price</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>expiration_date</td>
+<td>Date(Optional)</td>
+<td>Example: 2019-04-27</td>
+</tr>
+<tr>
+<td>fnsku</td>
+<td>String(Optional)</td>
+<td>Example: 0060011831</td>
+</tr>
+<tr>
+<td>image_urls</td>
+<td>Array(Optional)</td>
+<td>Array of image urls</td>
+</tr>
+<tr>
+<td>external_ids</td>
+<td>String(Optional)</td>
+<td>Example: [&quot;B07G22S48Q&quot;, &quot;883929635085&quot;]</td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+    </span><span class="s2">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cb6dbe14d003d0ea900001d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04-17-2019"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ship_from_address_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59e0d31f07b6204cc8000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T07:55:14.030Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T07:55:14.030Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_valid_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">444</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phase"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"seller_fulfilled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label_prep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"print_all_fba_labels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"print_fba_labels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"needed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"print_all_item_labels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"convert_images"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"performing_action"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sku_prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auto_location_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auto_location_prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skip_box_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auto_create_shipments"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auto_print_exp_dates"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"prefill_product_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_listings_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"item_present_option"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inc_quantity"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"multiple_matches_pick_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_folder_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"processing_company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketplace_account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EbayAccount"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketplace_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c1902f207b620090a000026"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59dd22f507b6201961000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"template_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EbayTemplate"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"template_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c1902f207b620090a00003e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_file_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_content_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_file_size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"04"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2019"</span><span class="p">,</span><span class="w"> </span><span class="s2">"17"</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+</span></code></pre><h1 id='errors'>Errors</h1>
+<p>The SellerChamp API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -495,9 +859,6 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
