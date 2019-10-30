@@ -233,6 +233,9 @@
                   <li>
                     <a href="#get-all-orders-with-parameters" class="toc-h2 toc-link" data-title="Get All Orders with parameters">Get All Orders with parameters</a>
                   </li>
+                  <li>
+                    <a href="#update-an-order" class="toc-h2 toc-link" data-title="Update an Order">Update an Order</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -259,7 +262,7 @@
 <p>An API Token must be called with every request.  To obtain your API Token contact us at support@sellerchamp.com</p>
 <h1 id='orders'>Orders</h1><h2 id='get-all-orders-w-o-parameters'>Get All Orders w/o parameters</h2><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl -X GET <span class="se">\</span>
-  https://staging.sellerchamp.com/api/orders <span class="se">\</span>
+  https://sellerchamp.com/api/orders <span class="se">\</span>
   -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
 
  Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
@@ -339,7 +342,7 @@ curl -X GET <span class="se">\</span>
 &amp;page={page}
 &amp;page_size={page_size}</p>
 <pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url <span class="s1">'https://staging.sellerchamp.com/api/orders?buyer_name={buyer_name}%0A&amp;order_number={order_number}%0A&amp;order_status={order_status}%0A&amp;purchased_at_start={purchased_at_start}%0A&amp;purchased_at_end={purchased_at_start}%0A&amp;store_id={store_id}%0A&amp;sort={sort_by}%0A&amp;direction={sort_direction}%0A&amp;page={page}%0A&amp;page_size={page_size}&amp;created_at_start={created_at_start}%0A&amp;created_at_end={created_at_end}%0A&amp;updated_at_start={updated_at_start}%0A&amp;updated_at_end={updated_at_end}%0A'</span> <span class="se">\</span>
+  --url <span class="s1">'https://sellerchamp.com/api/orders?buyer_name={buyer_name}%0A&amp;order_number={order_number}%0A&amp;order_status={order_status}%0A&amp;purchased_at_start={purchased_at_start}%0A&amp;purchased_at_end={purchased_at_start}%0A&amp;store_id={store_id}%0A&amp;sort={sort_by}%0A&amp;direction={sort_direction}%0A&amp;page={page}%0A&amp;page_size={page_size}&amp;created_at_start={created_at_start}%0A&amp;created_at_end={created_at_end}%0A&amp;updated_at_start={updated_at_start}%0A&amp;updated_at_end={updated_at_end}%0A'</span> <span class="se">\</span>
   -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
 </code></pre><h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -420,6 +423,42 @@ curl -X GET <span class="se">\</span>
 <td>Requested page size. Default: 250.</td>
 </tr>
 </tbody></table>
+<h2 id='update-an-order'>Update an Order</h2>
+<p>Updates an order. If tracking number and carrier code are provided, they are submitted to the respective marketplace.</p>
+
+<p>URL format:</p>
+
+<p>/orders/{order_id}</p>
+<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
+ --url https://sellerchamp.com/api/orders/<span class="o">{</span>order_id<span class="o">}</span> <span class="se">\</span>
+ --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+ --header <span class="s1">'cache-control: no-cache,no-cache,no-cache'</span> <span class="se">\</span>
+ --header <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+ --data <span class="s1">'{ "order": { "id": "{id}", tracking_number: "{tracking_number}", carrier_code: "{carrier_code}" } }'</span>
+</code></pre><h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The ID of the order to update</td>
+</tr>
+<tr>
+<td>tracking_number</td>
+<td>String</td>
+<td>The order&#39;s tracking number</td>
+</tr>
+<tr>
+<td>carrier_code</td>
+<td>String</td>
+<td>The carrier service used to ship the order (UPS, USPS, FedEx, etc.)</td>
+</tr>
+</tbody></table>
 <h1 id='manifest'>Manifest</h1><h2 id='create-manifest-with-parameters'>Create Manifest with parameters</h2>
 <p>It will create the manifest according to your parameters along with the array of listing.</p>
 
@@ -427,12 +466,12 @@ curl -X GET <span class="se">\</span>
 
 <p>/manifests</p>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
-  --url https://staging.sellerchamp.com/api/manifests <span class="se">\</span>
+  --url https://sellerchamp.com/api/manifests <span class="se">\</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'cache-control: no-cache,no-cache,no-cache'</span> <span class="se">\</span>
   --header <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
   --data <span class="s1">'{ "manifest" : { "name": "{name}", "marketplace_account_id" : "{marketplace_account_id}", "supplier_id" : "{supplier_id}", "ship_from_address_id" : "{ship_from_address_id}", "template_id" : "{template_id}", "product_listings_attributes" : [{"asin" : "{asin}", "quantity" : "{quantity}", "item_condition" : "{item_condition}", "upc" : "{upc}", "sku" : "{sku}", "title" : "{title}", "retail_price" : "{retail_price}", "item_location" : "{item_location}", "item_category" : "{item_category}", "item_category_id" : "{item_category_id}", "item_remarks" : "{item_remarks}", "brand" : "{brand}", "description" : "{description}", "features" : "{features}", "details_html" : "{details_html}", "item_specifics" : "{item_specifics}", "mpn" : "{mpn}", "listing_format" : "{listing_format}", "color" : "{color}", "manufacturer" : "{manufacturer}", "model" : "{model}", "part_number" : "{part_number}", "listing_duration" : "{listing_duration}", "store_category_external_id" : "{store_category_external_id}","store_category_2_external_id" : "{store_category_2_external_id}", "weight_in_pounds" : "{weight_in_pounds}", "package_dimensions_length" : "{package_dimensions_length}", "package_dimensions_width" : "{package_dimensions_width}", "package_dimensions_height" : "{package_dimensions_height}", "item_dimensions_length" : "{item_dimensions_length}", "item_dimensions_width" : "{item_dimensions_width}", "item_dimensions_height" : "{item_dimensions_height}", "handling_time" : "{handling_time}", "shipping_charge_type" : "{shipping_charge_type}", "global_shipping" : "{global_shipping}", "free_shipping" : "{free_shipping}", "shipping_service_code" : "{shipping_service_code}", "shipping_service_cost" : "{shipping_service_cost}", "extra_shipping_service_cost" : "{extra_shipping_service_cost}", "domestic_rate_table" : "{domestic_rate_table}", "international_shipping_service_code" : "{international_shipping_service_code}", "international_shipping_service_cost" : "{international_shipping_service_cost}", "extra_international_shipping_service_cost" : "{extra_international_shipping_service_cost}", "international_ship_to_locations" : "{international_ship_to_locations}", "international_rate_table" : "{international_rate_table}", "return_in_days_value" : "{return_in_days_value}", "refund_policy_value" : "{refund_policy_value}", "return_shipping_paid_by_value" : "{return_shipping_paid_by_value}", "qunatity_in_case" : "{qunatity_in_case}", "cost_price" : "{cost_price}", "expiration_date" : "{expiration_date}", "fnsku" : "{fnsku}", "image_urls" : [], "external_ids" : []}] } }'</span>
-</code></pre><h3 id='url-parameters-2'>URL Parameters</h3>
+</code></pre><h3 id='url-parameters-3'>URL Parameters</h3>
 <p>Manifest Parameters</p>
 
 <table><thead>
