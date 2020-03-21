@@ -225,24 +225,74 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+            <a href="#marketplace-accounts" class="toc-h1 toc-link" data-title="Marketplace Accounts">Marketplace Accounts</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-orders-w-o-parameters" class="toc-h2 toc-link" data-title="Get All Orders w/o parameters">Get All Orders w/o parameters</a>
-                  </li>
-                  <li>
-                    <a href="#get-all-orders-with-parameters" class="toc-h2 toc-link" data-title="Get All Orders with parameters">Get All Orders with parameters</a>
-                  </li>
-                  <li>
-                    <a href="#update-an-order" class="toc-h2 toc-link" data-title="Update an Order">Update an Order</a>
+                    <a href="#get-marketplace_accounts" class="toc-h2 toc-link" data-title="GET marketplace_accounts">GET marketplace_accounts</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#manifest" class="toc-h1 toc-link" data-title="Manifest">Manifest</a>
+            <a href="#manifests" class="toc-h1 toc-link" data-title="Manifests">Manifests</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-manifest-with-parameters" class="toc-h2 toc-link" data-title="Create Manifest with parameters">Create Manifest with parameters</a>
+                    <a href="#create-manifest-with-parameters" class="toc-h2 toc-link" data-title="CREATE manifest with parameters">CREATE manifest with parameters</a>
+                  </li>
+                  <li>
+                    <a href="#get-manifests" class="toc-h2 toc-link" data-title="GET manifests">GET manifests</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#product-listings" class="toc-h1 toc-link" data-title="Product Listings">Product Listings</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-product_listings-for-a-manifest_id" class="toc-h2 toc-link" data-title="GET product_listings for a manifest_id">GET product_listings for a manifest_id</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#products" class="toc-h1 toc-link" data-title="Products">Products</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-products" class="toc-h2 toc-link" data-title="GET products">GET products</a>
+                  </li>
+                  <li>
+                    <a href="#get-product" class="toc-h2 toc-link" data-title="GET product">GET product</a>
+                  </li>
+                  <li>
+                    <a href="#update-product" class="toc-h2 toc-link" data-title="UPDATE product">UPDATE product</a>
+                  </li>
+                  <li>
+                    <a href="#delete-product" class="toc-h2 toc-link" data-title="DELETE product">DELETE product</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#product-images" class="toc-h1 toc-link" data-title="Product Images">Product Images</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-product_images" class="toc-h2 toc-link" data-title="GET product_images">GET product_images</a>
+                  </li>
+                  <li>
+                    <a href="#create-product_images" class="toc-h2 toc-link" data-title="CREATE product_images">CREATE product_images</a>
+                  </li>
+                  <li>
+                    <a href="#delete-product_image" class="toc-h2 toc-link" data-title="DELETE product_image">DELETE product_image</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-orders-w-o-parameters" class="toc-h2 toc-link" data-title="GET orders w/o parameters">GET orders w/o parameters</a>
+                  </li>
+                  <li>
+                    <a href="#get-orders-with-parameters" class="toc-h2 toc-link" data-title="GET orders with parameters">GET orders with parameters</a>
+                  </li>
+                  <li>
+                    <a href="#update-order" class="toc-h2 toc-link" data-title="UPDATE order">UPDATE order</a>
                   </li>
               </ul>
           </li>
@@ -259,252 +309,130 @@
 
 <p>You can view code examples in the dark area to the right.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>An API Token must be called with every request.  To obtain your API Token contact us at support@sellerchamp.com</p>
-<h1 id='orders'>Orders</h1><h2 id='get-all-orders-w-o-parameters'>Get All Orders w/o parameters</h2><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl -X GET <span class="se">\</span>
-  https://sellerchamp.com/api/orders <span class="se">\</span>
-  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+<p>An API Token must be passed in inside the headers with every request.  To obtain your API Token contact us at support@sellerchamp.com</p>
 
- Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
-</code></pre>
-<p>Returns back all the orders for the client object associated with the specified API Token.  Default page size is 250.</p>
+<p>Pass it as the header-key &#39;Token&#39;.</p>
+<h1 id='marketplace-accounts'>Marketplace Accounts</h1><h2 id='get-marketplace_accounts'>GET marketplace_accounts</h2>
+<p>Returns all of your connected marketplace accounts (Amazon, eBay, Shopify, etc.)</p>
 
-<p><code>Token: YOUR-TOKEN</code></p>
+<p>Url format:</p>
 
+<p>/api/marketplace_accounts</p>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url <span class="s1">'https://sellerchamp.com/api/marketplace_accounts \
+  -H '</span>token: YOUR-TOKEN<span class="s1">' \
+
+Make sure to replace `YOUR-TOKEN` with your API key token.
+</span></code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"marketplace_accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"132886362059-1538935630003"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-07T23:02:55.533Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-14T00:10:56.000+00:00"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"order_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipped"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"buyer_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ellis driver"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"ship_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ellis driver"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1623 NC Highway 86 N"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"street2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hillsborough"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NC"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27278-7516"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d516f51584085a850000013"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MaryKom"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"icon_black"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/assets/icons/src/amazon.svg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"icon_white"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:3000/assets/icons/src/amazon-white.svg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amazon"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_folders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c33da5a07b6203f81000887"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S11LPJMI1BZZT"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premium Rainbow Color Embroidery Floss - Cross Stitch Threads - Friendship Bra.."</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ounces"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.54</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"warehouse_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"fulfillment_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S11LPJMI1BZZT"</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d516f52584085a850000029"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d516f52584085a85000002a"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Active"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d516f52584085a85000002b"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Drafts"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"drafts"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d516f52584085a85000002c"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Channel Imports"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"channel_imports"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d516f52584085a85000002d"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Archived"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"archived"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e4cb620584085359200003e"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purchase Orders"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"internal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase_orders"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
                 </span><span class="p">}</span><span class="w">
-            </span><span class="p">],</span><span class="w">
-            </span><span class="s2">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c1902f207b620090a000026"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"items_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.54</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"buyer_notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"externally_fulfilled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"externally_fulfilled_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='get-all-orders-with-parameters'>Get All Orders with parameters</h2>
-<p>Returns back a list of orders that match the specified criteria. All of the available filters are optional. They do not need to be included in the URL. If you do include them, here&#39;s what the URL may look like:</p>
-
-<p>Url format with filters:</p>
-
-<p>/orders?buyer_name={buyer_name}
-&amp;created_at_start={created_at_start}
-&amp;created_at_end={created_at_end}
-&amp;updated_at_start={updated_at_start}
-&amp;updated_at_end={updated_at_end}
-&amp;order_number={order_number}
-&amp;order_status={order_status}
-&amp;purchased_at_start={purchased_at_start}
-&amp;purchased_at_end={purchased_at_start}
-&amp;store_id={store_id}
-&amp;sort={sort_by}
-&amp;direction={sort_direction}
-&amp;page={page}
-&amp;page_size={page_size}</p>
-<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
-  --url <span class="s1">'https://sellerchamp.com/api/orders?buyer_name={buyer_name}%0A&amp;order_number={order_number}%0A&amp;order_status={order_status}%0A&amp;purchased_at_start={purchased_at_start}%0A&amp;purchased_at_end={purchased_at_start}%0A&amp;store_id={store_id}%0A&amp;sort={sort_by}%0A&amp;direction={sort_direction}%0A&amp;page={page}%0A&amp;page_size={page_size}&amp;created_at_start={created_at_start}%0A&amp;created_at_end={created_at_end}%0A&amp;updated_at_start={updated_at_start}%0A&amp;updated_at_end={updated_at_end}%0A'</span> <span class="se">\</span>
-  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
-</code></pre><h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>buyer_name</td>
-<td>String</td>
-<td>Returns orders that match the specified name. Example: smith.</td>
-</tr>
-<tr>
-<td>created_at_start</td>
-<td>String</td>
-<td>Returns orders that were created after the specified date Example: 2015-01-01 00:00:00.</td>
-</tr>
-<tr>
-<td>created_at_end</td>
-<td>String</td>
-<td>Returns orders that were created before the specified date Example: 2015-01-08 00:00:00.</td>
-</tr>
-<tr>
-<td>updated_at_start</td>
-<td>String</td>
-<td>Returns orders that were modified after the specified date Example: 2015-01-01 00:00:00.</td>
-</tr>
-<tr>
-<td>updated_at_end</td>
-<td>String</td>
-<td>Returns orders that were modified before the specified date Example: 2015-01-08 00:00:00.</td>
-</tr>
-<tr>
-<td>order_number</td>
-<td>String</td>
-<td>Filter by order number, performs a &quot;starts with&quot; search. Example: 12345.</td>
-</tr>
-<tr>
-<td>order_status</td>
-<td>String</td>
-<td>Filter by order status. If left empty, orders of all statuses are returned. Example: shipped</td>
-</tr>
-<tr>
-<td>purchased_at_start</td>
-<td>String</td>
-<td>Returns orders that were paid after the specified date Example: 2015-01-01</td>
-</tr>
-<tr>
-<td>purchased_at_end</td>
-<td>String</td>
-<td>Returns orders that were paid before the specified date Example: 2015-01-08</td>
-</tr>
-<tr>
-<td>store_id</td>
-<td>Number</td>
-<td>Filters orders to a single store. Call List Stores to obtain a list of store Ids. Example: 12345.</td>
-</tr>
-<tr>
-<td>sort</td>
-<td>String</td>
-<td>Sort the responses by a set value. The response will be sorted based off the ascending dates (oldest to most current.) If left empty, the response will be sorted by ascending order_id. Example: Order_date</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>String</td>
-<td>Sets the direction of the sort order. Example: ASC.</td>
-</tr>
-<tr>
-<td>page</td>
-<td>String</td>
-<td>Page number Default: 1.</td>
-</tr>
-<tr>
-<td>page_size</td>
-<td>number</td>
-<td>Requested page size. Default: 250.</td>
-</tr>
-</tbody></table>
-<h2 id='update-an-order'>Update an Order</h2>
-<p>Updates an order. If tracking number and carrier code are provided, they are submitted to the respective marketplace.</p>
-
-<p>URL format:</p>
-
-<p>/orders/{order_id}</p>
-<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
- --url https://sellerchamp.com/api/orders/<span class="o">{</span>order_id<span class="o">}</span> <span class="se">\</span>
- --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
- --header <span class="s1">'cache-control: no-cache,no-cache,no-cache'</span> <span class="se">\</span>
- --header <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
- --data <span class="s1">'{ "order": { "id": "{id}", tracking_number: "{tracking_number}", carrier_code: "{carrier_code}" } }'</span>
-</code></pre><h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Data Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>The ID of the order to update</td>
-</tr>
-<tr>
-<td>tracking_number</td>
-<td>String</td>
-<td>The order&#39;s tracking number</td>
-</tr>
-<tr>
-<td>carrier_code</td>
-<td>String</td>
-<td>The carrier service used to ship the order (UPS, USPS, FedEx, etc.)</td>
-</tr>
-</tbody></table>
-<h1 id='manifest'>Manifest</h1><h2 id='create-manifest-with-parameters'>Create Manifest with parameters</h2>
+</span></code></pre><h1 id='manifests'>Manifests</h1><h2 id='create-manifest-with-parameters'>CREATE manifest with parameters</h2>
 <p>It will create the manifest according to your parameters along with the array of listing.</p>
 
-<p>Url format with filters:</p>
+<p>Url format:</p>
 
-<p>/manifests</p>
+<p>/api/manifests</p>
 <pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
   --url https://sellerchamp.com/api/manifests <span class="se">\</span>
   --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   --header <span class="s1">'cache-control: no-cache,no-cache,no-cache'</span> <span class="se">\</span>
   --header <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
   --data <span class="s1">'{ "manifest" : { "name": "{name}", "marketplace_account_id" : "{marketplace_account_id}", "supplier_id" : "{supplier_id}", "ship_from_address_id" : "{ship_from_address_id}", "template_id" : "{template_id}", "product_listings_attributes" : [{"asin" : "{asin}", "quantity" : "{quantity}", "item_condition" : "{item_condition}", "upc" : "{upc}", "sku" : "{sku}", "title" : "{title}", "retail_price" : "{retail_price}", "item_location" : "{item_location}", "item_category" : "{item_category}", "item_category_id" : "{item_category_id}", "item_remarks" : "{item_remarks}", "brand" : "{brand}", "description" : "{description}", "features" : "{features}", "details_html" : "{details_html}", "item_specifics" : "{item_specifics}", "mpn" : "{mpn}", "listing_format" : "{listing_format}", "color" : "{color}", "manufacturer" : "{manufacturer}", "model" : "{model}", "part_number" : "{part_number}", "listing_duration" : "{listing_duration}", "store_category_external_id" : "{store_category_external_id}","store_category_2_external_id" : "{store_category_2_external_id}", "weight_in_pounds" : "{weight_in_pounds}", "package_dimensions_length" : "{package_dimensions_length}", "package_dimensions_width" : "{package_dimensions_width}", "package_dimensions_height" : "{package_dimensions_height}", "item_dimensions_length" : "{item_dimensions_length}", "item_dimensions_width" : "{item_dimensions_width}", "item_dimensions_height" : "{item_dimensions_height}", "handling_time" : "{handling_time}", "shipping_charge_type" : "{shipping_charge_type}", "global_shipping" : "{global_shipping}", "free_shipping" : "{free_shipping}", "shipping_service_code" : "{shipping_service_code}", "shipping_service_cost" : "{shipping_service_cost}", "extra_shipping_service_cost" : "{extra_shipping_service_cost}", "domestic_rate_table" : "{domestic_rate_table}", "international_shipping_service_code" : "{international_shipping_service_code}", "international_shipping_service_cost" : "{international_shipping_service_cost}", "extra_international_shipping_service_cost" : "{extra_international_shipping_service_cost}", "international_ship_to_locations" : "{international_ship_to_locations}", "international_rate_table" : "{international_rate_table}", "return_in_days_value" : "{return_in_days_value}", "refund_policy_value" : "{refund_policy_value}", "return_shipping_paid_by_value" : "{return_shipping_paid_by_value}", "qunatity_in_case" : "{qunatity_in_case}", "cost_price" : "{cost_price}", "expiration_date" : "{expiration_date}", "fnsku" : "{fnsku}", "image_urls" : [], "external_ids" : []}] } }'</span>
-</code></pre><h3 id='url-parameters-3'>URL Parameters</h3>
+</code></pre><h3 id='url-parameters'>URL Parameters</h3>
 <p>Manifest Parameters</p>
 
 <table><thead>
 <tr>
 <th>Name</th>
-<th>Data Type(Required)</th>
+<th>Data Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>name</td>
-<td>String(Required)</td>
+<td>String (required)</td>
 <td>Name of the Manifest. Example: 04-17-2019.</td>
 </tr>
 <tr>
 <td>supplier_id</td>
-<td>String(Optional)</td>
+<td>String (optional)</td>
 <td>Supplier ID. Example: &#39;59e0f41007b6205968000016&#39;.</td>
 </tr>
 <tr>
 <td>ship_from_address_id</td>
-<td>String(Required)</td>
+<td>String (required)</td>
 <td>ID of ship from address Example: &#39;59e0d31f07b6204cc8000000&#39;.</td>
 </tr>
 <tr>
 <td>marketplace_account_id</td>
-<td>String(Required)</td>
+<td>String (required)</td>
 <td>ID of Marketplace Account. Example: &#39;5c1902f207b620090a000026&#39;.</td>
 </tr>
 <tr>
 <td>template_id</td>
-<td>String(Optional)</td>
+<td>String (optional)</td>
 <td>Template ID. Example: &#39;5c1902f207b620090a00003e&#39;</td>
+</tr>
+<tr>
+<td>seller_fulfilled</td>
+<td>Boolean (optional)</td>
+<td>If manifest should add items as merchant fulfilled or FBA. Applicable only for Amazon.</td>
+</tr>
+<tr>
+<td>auto_submit</td>
+<td>Boolean (optional)</td>
+<td>Submit manifest to marketplace after all listings have been created.</td>
 </tr>
 </tbody></table>
 
@@ -513,7 +441,7 @@ curl -X GET <span class="se">\</span>
 <table><thead>
 <tr>
 <th>Name</th>
-<th>Data Type(Required)</th>
+<th>Data Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -841,7 +769,776 @@ curl -X GET <span class="se">\</span>
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h1 id='errors'>Errors</h1>
+</span></code></pre><h2 id='get-manifests'>GET manifests</h2>
+<p>Returns back paged manifests optionally filtering by marketplace_account_id OR manifest_folder_id.  Default page size is 25.</p>
+
+<p>Url format:</p>
+
+<p>/api/manifests?marketplace_account_id={marketplace_account_id}
+&amp;manifest_folder_id={manifest_folder_id}
+&amp;page={page}&amp;page_size={page_size}</p>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url <span class="s1">'https://sellerchamp.com/api/manifests?marketplace_account_id={marketplace_account_id}%0A&amp;manifest_folder_id={manifest_folder_id}%%0A&amp;page={page}%0A&amp;page_size={page_size}'</span> <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+
+Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre><h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketplace_account_id</td>
+<td>String (optional)</td>
+<td>The marketplace_account_id for which to fetch manifests.</td>
+</tr>
+<tr>
+<td>manifest_folder_id</td>
+<td>String (optional)</td>
+<td>The manifest_folder_id for which to fetch manifests</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"manifests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e7514fa07b6201d69000263"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03-20-2020"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ship_from_address_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d1c7a6107b6200724000012"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-20T19:09:46.209Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-03-20T19:09:46.209Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_valid_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">51871</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"phase"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"seller_fulfilled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"label_prep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"print_all_fba_labels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"print_fba_labels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"needed"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"print_all_item_labels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"convert_images"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"performing_action"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sku_prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"auto_location_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"auto_location_prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"skip_box_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"auto_create_shipments"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"auto_print_exp_dates"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"prefill_product_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_listings_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_present_option"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inc_quantity"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"multiple_matches_pick_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_folder_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e2fb23d07b62074fe000027"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"processing_company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketplace_account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EbayAccount"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketplace_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e2fb23d07b62074fe000011"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cfc419d07b6200b87000000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"template_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EbayTemplate"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"template_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e2fb23d07b62074fe000033"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_xls_file_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_xls_content_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_xls_file_size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_xls_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_xls_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"_keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"03"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"20"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"2020"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='product-listings'>Product Listings</h1><h2 id='get-product_listings-for-a-manifest_id'>GET product_listings for a manifest_id</h2>
+<p>Returns back paged product_listings for a given manifest_id.  Default page size is 25.</p>
+
+<p>Url format:</p>
+
+<p>/api/manifests/{manifest_id}/product_listings?page={page}&amp;page_size={page_size}</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -X GET <span class="se">\</span>
+  https://sellerchamp.com/api/manifests/<span class="o">{</span>manifest_id<span class="o">}</span>/product_listings?page<span class="o">={</span>page<span class="o">}</span>&amp;page_size<span class="o">={</span>page_size<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+
+ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"product_listings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c982000305"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6ec5a5584085af1800013d"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketplace_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d50c6735840854a3900002c"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S127K7Z8YH4Q"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B07NLMXG57"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity_listed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030a"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41GAMTpSarL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41GAMTpSarL.jpg"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030b"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31LKUpz0yTL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31LKUpz0yTL.jpg"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030c"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41TCMfP2uGL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41TCMfP2uGL.jpg"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030d"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31-nGA7ezgL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31-nGA7ezgL.jpg"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"list_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"okay_to_ship"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"list_status_error_detail"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"list_status_error_detail_2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6ed77e584085706800007a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6ed77e5840857068000076"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"manifest_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6ec5a5584085af1800013d"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketplace_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d50c6735840854a3900002c"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S127K7TSO3BZ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B01DE7MNEQ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lego Scooby-Doo: Haunted Hollywood"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity_listed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6ed77e5840857068000078"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e6ed77e5840857068000076"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lego Scooby-Doo: Haunted Hollywood"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/51NWjpojihL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/51NWjpojihL.jpg"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"list_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"restricted_listing"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"list_status_error_detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"'Lego Scooby-Doo: Haunted Hollywood' has been known to cause copyright infringement complaint: ."</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"list_status_error_detail_2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h1 id='products'>Products</h1><h2 id='get-products'>GET products</h2>
+<p>Returns back paged products optionally filtering by marketplace_account_id.  Default page size is 50.</p>
+
+<p>Url format:</p>
+
+<p>/api/products</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -X GET <span class="se">\</span>
+  https://sellerchamp.com/api/products.json?marketplace_account_id<span class="o">={</span>marketplace_account_id<span class="o">}</span>&amp;page<span class="o">={</span>page<span class="o">}</span>&amp;page_size<span class="o">={</span>page_size<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+
+ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre><h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>marketplace_account_type</td>
+<td>String (optional)</td>
+<td>Returns the products belonging to this marketplace_account_id</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketplace_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d50c6735840854a3900002c"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S127K7Z8YH4Q"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B07NLMXG57"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"upc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"732994293105"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disclaimer: If no size is seen above and there is only one size in the listing, the size can be found here ---&gt; Shoe Size: 8.5 Medium US Womens"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity_available"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"quantity_listed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketplace_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketplace_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"110510555780"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"item_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"inventory_locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"quantity_available"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"awaiting_pick"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"delete_if_empty"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"product_images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030a"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41GAMTpSarL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41GAMTpSarL.jpg"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030b"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31LKUpz0yTL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31LKUpz0yTL.jpg"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030c"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41TCMfP2uGL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41TCMfP2uGL.jpg"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030d"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31-nGA7ezgL.jpg"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31-nGA7ezgL.jpg"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-product'>GET product</h2>
+<p>Returns back the product for the specified id.</p>
+
+<p>Url format:</p>
+
+<p>/api/products/{product_id}</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -X GET <span class="se">\</span>
+  https://sellerchamp.com/api/products/<span class="o">{</span>product_id<span class="o">}</span>.json <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+
+ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre><h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_id</td>
+<td>String (optional)</td>
+<td>The ID for the product to fetch.</td>
+</tr>
+</tbody></table>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"product"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketplace_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5d50c6735840854a3900002c"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S127K7Z8YH4Q"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"asin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B07NLMXG57"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"upc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"732994293105"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disclaimer: If no size is seen above and there is only one size in the listing, the size can be found here ---&gt; Shoe Size: 8.5 Medium US Womens"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity_available"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"quantity_listed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketplace_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketplace_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"110510555780"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"item_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"inventory_locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"quantity_available"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"awaiting_pick"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"delete_if_empty"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"product_images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030a"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41GAMTpSarL.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41GAMTpSarL.jpg"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030b"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31LKUpz0yTL.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31LKUpz0yTL.jpg"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030c"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41TCMfP2uGL.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41TCMfP2uGL.jpg"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030d"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31-nGA7ezgL.jpg"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31-nGA7ezgL.jpg"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='update-product'>UPDATE product</h2>
+<p>Updates the product with the specified ID.</p>
+
+<p>Url format:</p>
+
+<p>/api/products/{product_id}</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT <span class="se">\</span>
+  https://sellerchamp.com/api/products/5e73df57584085c9820002fe.json <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "product": {
+        "title": "New Title",
+        "quantity_available": 2
+    }
+}'</span>
+
+Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre><h3 id='body-parameters'>BODY PARAMETERS</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>String</td>
+<td>Product title</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Product description (can contain HTML)</td>
+</tr>
+<tr>
+<td>retail_price</td>
+<td>Float</td>
+<td>Product&#39;s selling price</td>
+</tr>
+<tr>
+<td>quantity_available</td>
+<td>Integer</td>
+<td>Product quantity available for purchase</td>
+</tr>
+</tbody></table>
+<h2 id='delete-product'>DELETE product</h2>
+<p>Deletes a product, optionally ending the listing on the marketplace.</p>
+
+<p>Url format:</p>
+
+<p>/api/products/{product_id}</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  <span class="s1">'http://localhost:3000/api/products/5e73df57584085c9820002fe.json?delete_product=true&amp;end_listing_on_marketplace=true&amp;delete_listing_on_marketplace=true&amp;delete_linked_products=true'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span>
+
+Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre><h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>delete_product</td>
+<td>Boolean</td>
+<td>Indicates if product should be deleted from the SellerChamp database</td>
+</tr>
+<tr>
+<td>end_listing_on_marketplace</td>
+<td>Boolean</td>
+<td>Indicates if listing should be ended on the marketplace</td>
+</tr>
+<tr>
+<td>delete_listing_on_marketplace</td>
+<td>Boolean</td>
+<td>Indicates if listing should be entirely removed from marketplace</td>
+</tr>
+<tr>
+<td>delete_linked_products</td>
+<td>Boolean</td>
+<td>Indicates if linked products should also be removed</td>
+</tr>
+</tbody></table>
+<h1 id='product-images'>Product Images</h1><h2 id='get-product_images'>GET product_images</h2>
+<p>Returns back product_images for a product</p>
+
+<p>Url format:</p>
+
+<p>/api/products/{product_id}/product_images</p>
+<pre class="highlight plaintext"><code>curl -X GET \
+  https://sellerchamp.com/api/products/5e73df57584085c9820002fe/product_images \
+  -H 'content-type: application/json' \
+  -H 'token: YOUR-TOKEN' \
+
+Make sure to replace `YOUR-TOKEN` with your API key token.
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"product_images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030a"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Title"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41GAMTpSarL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/41GAMTpSarL.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df8a584085c98200030b"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e73df57584085c9820002fe"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Title"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"original_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31LKUpz0yTL.jpg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"small_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"medium_image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"large_image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://images-na.ssl-images-amazon.com/images/I/31LKUpz0yTL.jpg"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='create-product_images'>CREATE product_images</h2>
+<p>Adds an image to an existing product</p>
+
+<p>Url format:</p>
+
+<p>/api/products/{product_id}/product_images</p>
+<pre class="highlight plaintext"><code>curl -X POST \
+  https://sellerchamp.com/api/products/5e29634b07b6201e4d0000d2/product_images \
+  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+  -H 'token: YOUR-TOKEN' \
+  -F 'product_image[group_name]=primary' \
+  -F 'product_image[attachment]=@s-l1600 (1).jpg'
+
+Make sure to replace `YOUR-TOKEN` with your API key token.
+</code></pre><h3 id='form-data-parameters'>FORM DATA Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_image[group_name]</td>
+<td>String</td>
+<td>Image group (primary or variant)</td>
+</tr>
+<tr>
+<td>product_image[attachment]</td>
+<td>File</td>
+<td>The image attachment</td>
+</tr>
+</tbody></table>
+<h2 id='delete-product_image'>DELETE product_image</h2>
+<p>Removes an image from an existing product</p>
+
+<p>Url format:</p>
+
+<p>/api/products/{product_id}/product_images/{product_image_id}</p>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
+  <span class="s1">'http://sellerchamp.com/api/products/5e73df57584085c9820002fe/product_images/5e29634b07b6201e4d0000d2.json?'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span>
+
+Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre><h1 id='orders'>Orders</h1><h2 id='get-orders-w-o-parameters'>GET orders w/o parameters</h2>
+<p>Url format:</p>
+
+<p>/api/orders</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl -X GET <span class="se">\</span>
+  https://sellerchamp.com/api/orders <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+
+ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre>
+<p>Returns back all the orders.  Default page size is 50.</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"132886362059-1538935630003"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-07T23:02:55.533Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"purchased_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-14T00:10:56.000+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shipped"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyer_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ellis driver"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyer_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ship_to"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ellis driver"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1623 NC Highway 86 N"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"street2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hillsborough"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NC"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27278-7516"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c33da5a07b6203f81000887"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S11LPJMI1BZZT"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premium Rainbow Color Embroidery Floss - Cross Stitch Threads - Friendship Bra.."</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"weight"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"units"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ounces"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"tax_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"unit_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.54</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"shipping_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"warehouse_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"fulfillment_sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S11LPJMI1BZZT"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c1902f207b620090a000026"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"items_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_paid"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.54</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"buyer_notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externally_fulfilled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"externally_fulfilled_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-orders-with-parameters'>GET orders with parameters</h2>
+<p>Returns back a list of orders that match the specified criteria. All of the available filters are optional. They do not need to be included in the URL. If you do include them, here&#39;s what the URL may look like:</p>
+
+<p>Url format with filters:</p>
+
+<p>/api/orders?buyer_name={buyer_name}
+&amp;created_at_start={created_at_start}
+&amp;created_at_end={created_at_end}
+&amp;updated_at_start={updated_at_start}
+&amp;updated_at_end={updated_at_end}
+&amp;order_number={order_number}
+&amp;order_status={order_status}
+&amp;purchased_at_start={purchased_at_start}
+&amp;purchased_at_end={purchased_at_start}
+&amp;store_id={store_id}
+&amp;sort={sort_by}
+&amp;direction={sort_direction}
+&amp;page={page}
+&amp;page_size={page_size}</p>
+<pre class="highlight shell tab-shell"><code>curl --request GET <span class="se">\</span>
+  --url <span class="s1">'https://sellerchamp.com/api/orders?buyer_name={buyer_name}%0A&amp;order_number={order_number}%0A&amp;order_status={order_status}%0A&amp;purchased_at_start={purchased_at_start}%0A&amp;purchased_at_end={purchased_at_start}%0A&amp;store_id={store_id}%0A&amp;sort={sort_by}%0A&amp;direction={sort_direction}%0A&amp;page={page}%0A&amp;page_size={page_size}&amp;created_at_start={created_at_start}%0A&amp;created_at_end={created_at_end}%0A&amp;updated_at_start={updated_at_start}%0A&amp;updated_at_end={updated_at_end}%0A'</span> <span class="se">\</span>
+  -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+
+Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
+</code></pre><h3 id='url-parameters-6'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>buyer_name</td>
+<td>String</td>
+<td>Returns orders that match the specified name. Example: smith.</td>
+</tr>
+<tr>
+<td>created_at_start</td>
+<td>String</td>
+<td>Returns orders that were created after the specified date Example: 2015-01-01 00:00:00.</td>
+</tr>
+<tr>
+<td>created_at_end</td>
+<td>String</td>
+<td>Returns orders that were created before the specified date Example: 2015-01-08 00:00:00.</td>
+</tr>
+<tr>
+<td>updated_at_start</td>
+<td>String</td>
+<td>Returns orders that were modified after the specified date Example: 2015-01-01 00:00:00.</td>
+</tr>
+<tr>
+<td>updated_at_end</td>
+<td>String</td>
+<td>Returns orders that were modified before the specified date Example: 2015-01-08 00:00:00.</td>
+</tr>
+<tr>
+<td>order_number</td>
+<td>String</td>
+<td>Filter by order number, performs a &quot;starts with&quot; search. Example: 12345.</td>
+</tr>
+<tr>
+<td>order_status</td>
+<td>String</td>
+<td>Filter by order status. If left empty, orders of all statuses are returned. Example: shipped</td>
+</tr>
+<tr>
+<td>purchased_at_start</td>
+<td>String</td>
+<td>Returns orders that were paid after the specified date Example: 2015-01-01</td>
+</tr>
+<tr>
+<td>purchased_at_end</td>
+<td>String</td>
+<td>Returns orders that were paid before the specified date Example: 2015-01-08</td>
+</tr>
+<tr>
+<td>store_id</td>
+<td>Number</td>
+<td>Filters orders to a single store. Call List Stores to obtain a list of store Ids. Example: 12345.</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>String</td>
+<td>Sort the responses by a set value. The response will be sorted based off the ascending dates (oldest to most current.) If left empty, the response will be sorted by ascending order_id. Example: Order_date</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>String</td>
+<td>Sets the direction of the sort order. Example: ASC.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>String</td>
+<td>Page number Default: 1.</td>
+</tr>
+<tr>
+<td>page_size</td>
+<td>number</td>
+<td>Requested page size. Default: 250.</td>
+</tr>
+</tbody></table>
+<h2 id='update-order'>UPDATE order</h2>
+<p>Updates an order. If tracking number and carrier code are provided, they are submitted to the respective marketplace.</p>
+
+<p>URL format:</p>
+
+<p>/api/orders/{order_id}</p>
+<pre class="highlight shell tab-shell"><code>curl --request PUT <span class="se">\</span>
+ --url https://sellerchamp.com/api/orders/<span class="o">{</span>order_id<span class="o">}</span> <span class="se">\</span>
+ --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+ --header <span class="s1">'cache-control: no-cache,no-cache,no-cache'</span> <span class="se">\</span>
+ --header <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+ -- data <span class="s1">'{ "order": { "id": "{id}", tracking_number: "{tracking_number}", carrier_code: "{carrier_code}" } }'</span>
+</code></pre><h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>The ID of the order to update</td>
+</tr>
+<tr>
+<td>tracking_number</td>
+<td>String</td>
+<td>The order&#39;s tracking number</td>
+</tr>
+<tr>
+<td>carrier_code</td>
+<td>String</td>
+<td>The carrier service used to ship the order (UPS, USPS, FedEx, etc.)</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
 <p>The SellerChamp API uses the following error codes:</p>
 
 <table><thead>
