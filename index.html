@@ -309,9 +309,14 @@
 
 <p>You can view code examples in the dark area to the right.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>An API Token must be passed in inside the headers with every request.  To obtain your API Token contact us at support@sellerchamp.com</p>
+<p>An API Token must be passed in inside the headers with every request.  You can generate your API Token by logging into SellerChamp.com and navigating to Settings -&gt; API Settings.  Click the &#39;Generate API Key&#39; button to generate your API Token.</p>
 
-<p>Pass it as the header-key &#39;Token&#39;.</p>
+<p><img src='images/api_settings_1.png' />
+<br/>
+<img src='images/api_settings_2.png' /></p>
+
+<p><br/>
+Pass it as the header-key &#39;Token&#39;.</p>
 <h1 id='marketplace-accounts'>Marketplace Accounts</h1><h2 id='get-marketplace_accounts'>GET marketplace_accounts</h2>
 <p>Returns all of your connected marketplace accounts (Amazon, eBay, Shopify, etc.)</p>
 
@@ -991,7 +996,7 @@ curl -X GET <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>marketplace_account_type</td>
+<td>marketplace_account_id</td>
 <td>String (optional)</td>
 <td>Returns the products belonging to this marketplace_account_id</td>
 </tr>
