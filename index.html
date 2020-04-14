@@ -250,6 +250,9 @@
                   <li>
                     <a href="#get-product_listings-for-a-manifest_id" class="toc-h2 toc-link" data-title="GET product_listings for a manifest_id">GET product_listings for a manifest_id</a>
                   </li>
+                  <li>
+                    <a href="#create-product_listings" class="toc-h2 toc-link" data-title="CREATE product_listings">CREATE product_listings</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -976,6 +979,352 @@ curl -X GET <span class="se">\</span>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='create-product_listings'>CREATE product_listings</h2>
+<p>It will create product_listings inside the specified manifest.</p>
+
+<p>Url format:</p>
+
+<p>/api/manifests/{manifest_id}/product_listings</p>
+<pre class="highlight shell tab-shell"><code>curl --request POST <span class="se">\</span>
+  --url https://sellerchamp.com/api/manifests/<span class="o">{</span>manifest_id<span class="o">}</span>/product_listings <span class="se">\</span>
+  --header <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  --header <span class="s1">'cache-control: no-cache,no-cache,no-cache'</span> <span class="se">\</span>
+  --header <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
+  --data <span class="s1">'{ "product_listings_attributes" : [{"asin" : "{asin}", "quantity" : "{quantity}", "item_condition" : "{item_condition}", "upc" : "{upc}", "sku" : "{sku}", "title" : "{title}", "retail_price" : "{retail_price}", "item_location" : "{item_location}", "item_category" : "{item_category}", "item_category_id" : "{item_category_id}", "item_remarks" : "{item_remarks}", "brand" : "{brand}", "description" : "{description}", "features" : "{features}", "details_html" : "{details_html}", "item_specifics" : "{item_specifics}", "mpn" : "{mpn}", "listing_format" : "{listing_format}", "color" : "{color}", "manufacturer" : "{manufacturer}", "model" : "{model}", "part_number" : "{part_number}", "listing_duration" : "{listing_duration}", "store_category_external_id" : "{store_category_external_id}","store_category_2_external_id" : "{store_category_2_external_id}", "weight_in_pounds" : "{weight_in_pounds}", "package_dimensions_length" : "{package_dimensions_length}", "package_dimensions_width" : "{package_dimensions_width}", "package_dimensions_height" : "{package_dimensions_height}", "item_dimensions_length" : "{item_dimensions_length}", "item_dimensions_width" : "{item_dimensions_width}", "item_dimensions_height" : "{item_dimensions_height}", "handling_time" : "{handling_time}", "shipping_charge_type" : "{shipping_charge_type}", "global_shipping" : "{global_shipping}", "free_shipping" : "{free_shipping}", "shipping_service_code" : "{shipping_service_code}", "shipping_service_cost" : "{shipping_service_cost}", "extra_shipping_service_cost" : "{extra_shipping_service_cost}", "domestic_rate_table" : "{domestic_rate_table}", "international_shipping_service_code" : "{international_shipping_service_code}", "international_shipping_service_cost" : "{international_shipping_service_cost}", "extra_international_shipping_service_cost" : "{extra_international_shipping_service_cost}", "international_ship_to_locations" : "{international_ship_to_locations}", "international_rate_table" : "{international_rate_table}", "return_in_days_value" : "{return_in_days_value}", "refund_policy_value" : "{refund_policy_value}", "return_shipping_paid_by_value" : "{return_shipping_paid_by_value}", "qunatity_in_case" : "{qunatity_in_case}", "cost_price" : "{cost_price}", "expiration_date" : "{expiration_date}", "fnsku" : "{fnsku}", "image_urls" : [], "external_ids" : []}] }'</span>
+</code></pre><h3 id='url-parameters-3'>URL Parameters</h3>
+<p>ProductListing Parameters should be in array for multiple listing creations.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>asin</td>
+<td>String(Required)</td>
+<td>Listing ASIN. Example: B07G22S48Q.</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Integer(Optional)</td>
+<td>Quantity of the listing. Example: 2.</td>
+</tr>
+<tr>
+<td>item_condition</td>
+<td>Integer(Optional)</td>
+<td>It is an enum consist of the following values: [new, like_new, very_good, good, acceptable, refurbished, salvage] anyone. Example: like_new</td>
+</tr>
+<tr>
+<td>upc</td>
+<td>String(Optional)</td>
+<td>Example: 883929635085</td>
+</tr>
+<tr>
+<td>sku</td>
+<td>String(Optional)</td>
+<td>SKU of the listing. Example: AB883929635085.</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String(Required)</td>
+<td>Title of the listing. Example: DCU Justice League: Throne of Atlantis Commemorative Edition (BD) [Blu-ray].</td>
+</tr>
+<tr>
+<td>retail_price</td>
+<td>Float(Optional)</td>
+<td>Retail Price of the listing. Example: 9.99</td>
+</tr>
+<tr>
+<td>color</td>
+<td>String(Optional)</td>
+<td>Example: Navy</td>
+</tr>
+<tr>
+<td>manufacturer</td>
+<td>String(Optional)</td>
+<td>Example: Charmed</td>
+</tr>
+<tr>
+<td>model</td>
+<td>String(Optional)</td>
+<td>Example: P3Q-00001</td>
+</tr>
+<tr>
+<td>part_number</td>
+<td>String(Optional)</td>
+<td>Example: LE</td>
+</tr>
+<tr>
+<td>listing_duration</td>
+<td>String(Optional)</td>
+<td>It is an enum consist of the following values: [days_1, days_3, days_5, days_7, days_10, days_30, gtc] anyone. Example: gtc</td>
+</tr>
+<tr>
+<td>item_location</td>
+<td>String(Optional)</td>
+<td>Location of item in your warehouse.</td>
+</tr>
+<tr>
+<td>item_category</td>
+<td>String(Optional)</td>
+<td>Hierarchy of the item category(parent&gt;child). If ebay marketplace. Example: DVDs &amp; Blu-ray Discs.</td>
+</tr>
+<tr>
+<td>item_category_id</td>
+<td>String(Optional)</td>
+<td>Id of the item category. Example: 63861</td>
+</tr>
+<tr>
+<td>item_remarks</td>
+<td>String(Optional)</td>
+<td>Example: Item will come in original packaging and includes all accessories.  Item has been tested and is in full working condition.  Comes with a 30-day warranty..</td>
+</tr>
+<tr>
+<td>brand</td>
+<td>String(Optional)</td>
+<td>Example: Warner Manufacturing</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String(Optional)</td>
+<td>Description of the listing</td>
+</tr>
+<tr>
+<td>features</td>
+<td>Array(Optional)</td>
+<td>Features of the product</td>
+</tr>
+<tr>
+<td>details_html</td>
+<td>String(Optional)</td>
+<td>It is the HTML which contains item details with html tags. Example: <code>&lt;ul&gt;&lt;li&gt;Item Weight: 0.0 pounds&lt;/li&gt;&lt;li&gt;Shipping Weight: 0.0 pounds&lt;/li&gt;&lt;li&gt;Domestic Shipping: Item can be shipped within U.S.&lt;/li&gt;&lt;/ul&gt;</code></td>
+</tr>
+<tr>
+<td>item_specifics</td>
+<td>Array of JSON objects(Optional)</td>
+<td>Example: [{&quot;name&quot;=&gt;&quot;Brand&quot;, &quot;value&quot;=&gt;&quot;Update International&quot;, &quot;source&quot;=&gt;&quot;ItemSpecific&quot;}, {&quot;name&quot;=&gt;&quot;UPC&quot;, &quot;value&quot;=&gt;&quot;793842123296&quot;, &quot;source&quot;=&gt;&quot;ItemSpecific&quot;}]</td>
+</tr>
+<tr>
+<td>mpn</td>
+<td>String</td>
+<td>Example: 90000032507</td>
+</tr>
+<tr>
+<td>listing_format</td>
+<td>String(Optional)</td>
+<td>It is an enum consist of the following values: [fixed_price, auction] anyone. Example: fixed_price</td>
+</tr>
+<tr>
+<td>store_category_external_id</td>
+<td>String(Optional)</td>
+<td>Example: 64789836013</td>
+</tr>
+<tr>
+<td>store_category_2_external_id</td>
+<td>String(Optional)</td>
+<td>Example: 64789836013</td>
+</tr>
+<tr>
+<td>weight_in_pounds</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>package_dimensions_length</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>package_dimensions_width</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>package_dimensions_height</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>item_dimensions_length</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>item_dimensions_width</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>item_dimensions_height</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>handling_time</td>
+<td>Integer(Optional)</td>
+<td>Example: 1</td>
+</tr>
+<tr>
+<td>shipping_charge_type</td>
+<td>String(Optional)</td>
+<td>It is an enum consist of the following values: [flat, calculated, calculated_domestic_flat_international, flat_domestic_calculated_international, freight, freight_flat not_specified] anyone. Example: freight</td>
+</tr>
+<tr>
+<td>global_shipping</td>
+<td>Boolean(Optional)</td>
+<td>Example: True</td>
+</tr>
+<tr>
+<td>free_shipping</td>
+<td>Boolean(Optional)</td>
+<td>Example: True</td>
+</tr>
+<tr>
+<td>shipping_service_code</td>
+<td>String(Optional)</td>
+<td>It is an enum consist of the following values: [Other, ShippingMethodStandard, ShippingMethodExpress, ShippingMethodOvernight, Pickup, FlatRateFreight, USPSFirstClass, USPSMedia, USPSPriority, USPSPriorityFlatRateEnvelope, USPSPriorityMailSmallFlatRateBox, USPSPriorityFlatRateBox, USPSPriorityMailLargeFlatRateBox, USPSPriorityMailPaddedFlatRateEnvelope, USPSPriorityMailLegalFlatRateEnvelope, USPSExpressMail, USPSExpressFlatRateEnvelope, USPSExpressMailLegalFlatRateEnvelope, UPSNextDayAir, UPSNextDay, UPS2ndDay, UPS3rdDay, UPSGround, FedExHomeDelivery, FedEx2Day, FedExExpressSaver, FedExStandardOvernight, FedExPriorityOvernight] anyone. Example: USPSFirstClass</td>
+</tr>
+<tr>
+<td>shipping_service_cost</td>
+<td>Float(Optional)</td>
+<td>Example: 0.46</td>
+</tr>
+<tr>
+<td>extra_shipping_service_cost</td>
+<td>String(Optional)</td>
+<td>Example: 0.3</td>
+</tr>
+<tr>
+<td>domestic_rate_table</td>
+<td>Boolean(Optional)</td>
+<td>Example: False</td>
+</tr>
+<tr>
+<td>international_shipping_service_code</td>
+<td>String(Optional)</td>
+<td>It is an enum consist of the following values: [US_IntlEconomyShippingFromGC, ExpeditedDeliveryToRussia, US_IntlExpeditedShippingFromGC, OtherInternational, ExpeditedInternational, US_RUTrackedFromChina, StandardInternational, US_IntlStandardShippingFromGC, USPSFirstClassMailInternational, USPSExpressMailInternational, USPSExpressMailInternationalFlatRateEnvelope, USPSExpressMailInternationalLegalFlatRateEnvelope, USPSPriorityMailInternational, USPSPriorityMailInternationalFlatRateEnvelope, USPSPriorityMailInternationalLargeFlatRateBox, USPSPriorityMailInternationalLegalFlatRateEnvelope, USPSPriorityMailInternationalFlatRateBox, USPSPriorityMailInternationalPaddedFlatRateEnvelope, USPSPriorityMailInternationalSmallFlatRateBox, UPSStandardToCanada, UPSWorldWideExpedited, UPSWorldWideExpress, UPSWorldWideExpressPlus, UPSWorldwideSaver, FedExGroundInternationalToCanada, FedExInternationalEconomy, FedExInternationalPriority] anyone. Example: US_IntlEconomyShippingFromGC</td>
+</tr>
+<tr>
+<td>international_shipping_service_cost</td>
+<td>Float(Optional)</td>
+<td>Example: 0.6</td>
+</tr>
+<tr>
+<td>extra_international_shipping_service_cost</td>
+<td>Float(Optional)</td>
+<td>Example: 0.3</td>
+</tr>
+<tr>
+<td>international_ship_to_locations</td>
+<td>Array(Optional)</td>
+<td>Example: [&quot;CN&quot;, &quot;CA&quot;]</td>
+</tr>
+<tr>
+<td>international_rate_table</td>
+<td>Boolean(Optional)</td>
+<td>Example: False</td>
+</tr>
+<tr>
+<td>return_in_days_value</td>
+<td>String(Optional)</td>
+<td>It is an enum consist of the following values: [ReturnsNotAccepted, Days_30, Days_60] anyone. Example: Days_30</td>
+</tr>
+<tr>
+<td>refund_policy_value</td>
+<td>String(Optional)</td>
+<td>It is an enum consist of the following values: [MoneyBack, MoneyBackOrReplacement, MoneyBackOrExchange] anyone. Example: MoneyBack</td>
+</tr>
+<tr>
+<td>return_shipping_paid_by_value</td>
+<td>String(Optional)</td>
+<td>Example: Seller</td>
+</tr>
+<tr>
+<td>cost_price</td>
+<td>Float(Optional)</td>
+<td>Example: 0.0</td>
+</tr>
+<tr>
+<td>expiration_date</td>
+<td>Date(Optional)</td>
+<td>Example: 2019-04-27</td>
+</tr>
+<tr>
+<td>fnsku</td>
+<td>String(Optional)</td>
+<td>Example: 0060011831</td>
+</tr>
+<tr>
+<td>image_urls</td>
+<td>Array(Optional)</td>
+<td>Array of image urls. Example [user.png, user1.png]</td>
+</tr>
+<tr>
+<td>external_ids</td>
+<td>Array(Optional)</td>
+<td>Example: [&quot;B07G22S48Q&quot;, &quot;883929635085&quot;]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5cb96fc707b62026d6000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"supplier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ship_from_address_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59e0d31f07b6204cc8000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-19T06:50:47.455Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-19T06:50:47.455Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_valid_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status_message"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"processing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">590</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phase"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"seller_fulfilled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stock"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"label_prep"</span><span class="p">:</span><span class="w"> </span><span class="s2">"merchant"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"print_all_fba_labels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"print_fba_labels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"needed"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"print_all_item_labels"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"convert_images"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"performing_action"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sku_prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auto_location_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auto_location_prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"skip_box_content"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auto_create_shipments"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"auto_print_exp_dates"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"prefill_product_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_listings_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"item_present_option"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inc_quantity"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"multiple_matches_pick_strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_folder_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c6496e307b6205dce000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"processing_company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketplace_account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EbayAccount"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketplace_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c1902f207b620090a000026"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59dd22f507b6201961000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"template_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EbayTemplate"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"template_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5c1902f207b620090a00003e"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_file_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_content_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_file_size"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_updated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"manifest_xls_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"modifier_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"_keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"test"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre><h1 id='products'>Products</h1><h2 id='get-products'>GET products</h2>
 <p>Returns back paged products optionally filtering by marketplace_account_id.  Default page size is 50.</p>
 
@@ -988,7 +1337,7 @@ curl -X GET <span class="se">\</span>
   -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
 
  Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
-</code></pre><h3 id='url-parameters-3'>URL Parameters</h3>
+</code></pre><h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1074,7 +1423,7 @@ curl -X GET <span class="se">\</span>
   -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
 
  Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
-</code></pre><h3 id='url-parameters-4'>URL Parameters</h3>
+</code></pre><h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1201,7 +1550,7 @@ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span
   -H <span class="s1">'token: YOUR-TOKEN'</span>
 
 Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
-</code></pre><h3 id='url-parameters-5'>URL Parameters</h3>
+</code></pre><h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1403,7 +1752,7 @@ curl -X GET <span class="se">\</span>
   -H <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
 
 Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span> with your API key token.
-</code></pre><h3 id='url-parameters-6'>URL Parameters</h3>
+</code></pre><h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1494,7 +1843,7 @@ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span
  --header <span class="s1">'cache-control: no-cache,no-cache,no-cache'</span> <span class="se">\</span>
  --header <span class="s1">'token: YOUR-TOKEN'</span> <span class="se">\</span>
  -- data <span class="s1">'{ "order": { "id": "{id}", tracking_number: "{tracking_number}", carrier_code: "{carrier_code}" } }'</span>
-</code></pre><h3 id='url-parameters-7'>URL Parameters</h3>
+</code></pre><h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
