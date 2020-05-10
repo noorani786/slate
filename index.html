@@ -1383,7 +1383,7 @@ curl -X GET <span class="se">\</span>
 
 <p>Url format:</p>
 
-<p>/api/manifests/{manifest_id}/product_listings/{product_listing_id}</p>
+<p>/api/manifests/MANIFEST_ID/product_listings/PRODUCT_LISTING_ID</p>
 <pre class="highlight shell tab-shell"><code>curl -X DELETE <span class="se">\</span>
   <span class="s1">'http://localhost:3000/api/manifests/5e73df57584085c9820002fe/product_litings/5e73df57584085c9820002fe.json'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -1989,6 +1989,10 @@ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span
 <tr>
 <td>406</td>
 <td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict - Previous request still in progress.  Please wait a bit and try again later.</td>
 </tr>
 <tr>
 <td>410</td>
