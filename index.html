@@ -1429,6 +1429,36 @@ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span
 <td>String (optional)</td>
 <td>The product marketplace_id (ex: eBay Item ID) to search for</td>
 </tr>
+<tr>
+<td>created_at_start</td>
+<td>String (optional)</td>
+<td>Returns products that were created after the specified date Example: 2015-01-01T00:00:00</td>
+</tr>
+<tr>
+<td>created_at_end</td>
+<td>String (optional)</td>
+<td>Returns products that were created before the specified date Example: 2015-01-30T00:00:00</td>
+</tr>
+<tr>
+<td>updated_at_start</td>
+<td>String (optional)</td>
+<td>Returns products that were upated after the specified date Example: 2015-01-01T00:00:00</td>
+</tr>
+<tr>
+<td>updated_at_end</td>
+<td>String (optional)</td>
+<td>Returns products that were updated before the specified date Example: 2015-01-01T00:00:00</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>String (optional)</td>
+<td>Returns products that have this tag. NOTE: Use this to search for products that have just one tag.</td>
+</tr>
+<tr>
+<td>tags_array</td>
+<td>String (optional)</td>
+<td>Returns products that have exactly the specified tags.  NOTE: Use this to search for products that have multiple tags.  Ex: tags_array[]=A&amp;tags_array[]=B</td>
+</tr>
 </tbody></table>
 <pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl -X GET <span class="se">\</span>
