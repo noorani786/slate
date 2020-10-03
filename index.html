@@ -428,7 +428,14 @@ Make sure to replace `YOUR-TOKEN` with your API key token.
             "international_rate_table" : "false", "return_in_days_value" : "30",
             "refund_policy_value" : "", "return_shipping_paid_by_value" : "",
             "quantity_in_case" : "", "cost_price" : "2.00", "expiration_date" : "2020-10-30", "fnsku" : "",
-            "image_urls" : ['</span>https://someurl.com<span class="s1">'], "external_ids" : []}
+            "image_urls" : ['</span>https://someurl.com<span class="s1">'], "external_ids" : [], "variant_listings": [
+                {
+                    variant_sku: '</span>V1<span class="s1">', option1_name: '</span>Color<span class="s1">', option1_value: '</span>Red<span class="s1">', option2_name: '</span>Style<span class="s1">', option2_value: '</span>Solid<span class="s1">', asin: '</span>B00XX<span class="s1">', upc: '</span>12345<span class="s1">', quantity: 10, retail_price: 10.00, item_location: '</span>A1<span class="s1">'
+                },
+                {
+                    variant_sku: '</span>V2<span class="s1">', option1_name: '</span>Color<span class="s1">', option1_value: '</span>Blue<span class="s1">', option2_name: '</span>Style<span class="s1">', option2_value: '</span>Checkered<span class="s1">', asin: '</span>B00XX<span class="s1">', upc: '</span>12345<span class="s1">', quantity: 10, retail_price: 10.00, item_location: '</span>A1<span class="s1">'
+                }
+            ]}
     ]
 } }'</span>
 </code></pre><h3 id='url-parameters'>URL Parameters</h3>
@@ -751,6 +758,102 @@ Make sure to replace `YOUR-TOKEN` with your API key token.
 <td>external_ids</td>
 <td>Array(Optional)</td>
 <td>Example: [&quot;B07G22S48Q&quot;, &quot;883929635085&quot;]</td>
+</tr>
+</tbody></table>
+
+<p>VariantListing parameters should be an array for product listings containing variants</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>variant_sku</td>
+<td>String (optional)</td>
+<td>The variant SKU</td>
+</tr>
+<tr>
+<td>variant_alt_sku</td>
+<td>String (optional)</td>
+<td>The variant ALT SKU</td>
+</tr>
+<tr>
+<td>position</td>
+<td>Integer (optional)</td>
+<td>The variant&#39;s position</td>
+</tr>
+<tr>
+<td>option1_name</td>
+<td>String (required)</td>
+<td>The option name, ex: Color</td>
+</tr>
+<tr>
+<td>option1_value</td>
+<td>String (required)</td>
+<td>The option value, ex: Red</td>
+</tr>
+<tr>
+<td>option2_name</td>
+<td>String (optional)</td>
+<td>The option name, ex: Style</td>
+</tr>
+<tr>
+<td>option2_value</td>
+<td>String (optional)</td>
+<td>The option value, ex: Checkered</td>
+</tr>
+<tr>
+<td>option3_name</td>
+<td>String (optional)</td>
+<td>The option name</td>
+</tr>
+<tr>
+<td>option3_value</td>
+<td>String (optional)</td>
+<td>The option value</td>
+</tr>
+<tr>
+<td>option4_name</td>
+<td>String (optional)</td>
+<td>The option name</td>
+</tr>
+<tr>
+<td>option4_value</td>
+<td>String (optional)</td>
+<td>The option value</td>
+</tr>
+<tr>
+<td>retail_price</td>
+<td>Float (optional)</td>
+<td>The retail price of the variant</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Integer (optional)</td>
+<td>The quantity of the variant_listing</td>
+</tr>
+<tr>
+<td>item_location</td>
+<td>String (optional)</td>
+<td>The variant&#39;s warehouse bin location</td>
+</tr>
+<tr>
+<td>weight_in_pounds</td>
+<td>Float (optional)</td>
+<td>The variant&#39;s weight</td>
+</tr>
+<tr>
+<td>title</td>
+<td>String (optional)</td>
+<td>The variant&#39;s title</td>
+</tr>
+<tr>
+<td>image_urls</td>
+<td>Array (string)</td>
+<td>The variant&#39;s image urls</td>
 </tr>
 </tbody></table>
 
@@ -1380,93 +1483,99 @@ curl -X GET <span class="se">\</span>
 <td>Array(Optional)</td>
 <td>Example: [&quot;B07G22S48Q&quot;, &quot;883929635085&quot;]</td>
 </tr>
+</tbody></table>
+
+<p>VariantListing parameters should be an array if product listing contains variants</p>
+
+<table><thead>
 <tr>
-<td>variant_listings</td>
-<td>Array of hashes (optional)</td>
-<td></td>
+<th>Name</th>
+<th>Data Type</th>
+<th>Description</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>- variant_sku</td>
+<td>variant_sku</td>
 <td>String (optional)</td>
 <td>The variant SKU</td>
 </tr>
 <tr>
-<td>- variant_alt_sku</td>
+<td>variant_alt_sku</td>
 <td>String (optional)</td>
 <td>The variant ALT SKU</td>
 </tr>
 <tr>
-<td>- position</td>
+<td>position</td>
 <td>Integer (optional)</td>
 <td>The variant&#39;s position</td>
 </tr>
 <tr>
-<td>- option1_name</td>
+<td>option1_name</td>
 <td>String (required)</td>
 <td>The option name, ex: Color</td>
 </tr>
 <tr>
-<td>- option1_value</td>
+<td>option1_value</td>
 <td>String (required)</td>
 <td>The option value, ex: Red</td>
 </tr>
 <tr>
-<td>- option2_name</td>
+<td>option2_name</td>
 <td>String (optional)</td>
 <td>The option name, ex: Style</td>
 </tr>
 <tr>
-<td>- option2_value</td>
+<td>option2_value</td>
 <td>String (optional)</td>
 <td>The option value, ex: Checkered</td>
 </tr>
 <tr>
-<td>- option3_name</td>
+<td>option3_name</td>
 <td>String (optional)</td>
 <td>The option name</td>
 </tr>
 <tr>
-<td>- option3_value</td>
+<td>option3_value</td>
 <td>String (optional)</td>
 <td>The option value</td>
 </tr>
 <tr>
-<td>- option4_name</td>
+<td>option4_name</td>
 <td>String (optional)</td>
 <td>The option name</td>
 </tr>
 <tr>
-<td>- option4_value</td>
+<td>option4_value</td>
 <td>String (optional)</td>
 <td>The option value</td>
 </tr>
 <tr>
-<td>- retail_price</td>
+<td>retail_price</td>
 <td>Float (optional)</td>
 <td>The retail price of the variant</td>
 </tr>
 <tr>
-<td>- quantity</td>
+<td>quantity</td>
 <td>Integer (optional)</td>
 <td>The quantity of the variant_listing</td>
 </tr>
 <tr>
-<td>- item_location</td>
+<td>item_location</td>
 <td>String (optional)</td>
 <td>The variant&#39;s warehouse bin location</td>
 </tr>
 <tr>
-<td>- weight_in_pounds</td>
+<td>weight_in_pounds</td>
 <td>Float (optional)</td>
 <td>The variant&#39;s weight</td>
 </tr>
 <tr>
-<td>- title</td>
+<td>title</td>
 <td>String (optional)</td>
 <td>The variant&#39;s title</td>
 </tr>
 <tr>
-<td>- image_urls</td>
+<td>image_urls</td>
 <td>Array (string)</td>
 <td>The variant&#39;s image urls</td>
 </tr>
