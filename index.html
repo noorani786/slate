@@ -530,6 +530,16 @@ Make sure to replace `YOUR-TOKEN` with your API key token.
 <td>Retail Price of the listing. Example: 9.99</td>
 </tr>
 <tr>
+<td>msrp_price</td>
+<td>Float(Optional)</td>
+<td>Manufactrer Suggested Retail Price of the listing. Example: 19.99</td>
+</tr>
+<tr>
+<td>cost_price</td>
+<td>Float(Optional)</td>
+<td>Csot Price of the listing. Example: 2.99</td>
+</tr>
+<tr>
 <td>color</td>
 <td>String(Optional)</td>
 <td>Example: Navy</td>
@@ -733,11 +743,6 @@ Make sure to replace `YOUR-TOKEN` with your API key token.
 <td>return_shipping_paid_by_value</td>
 <td>String(Optional)</td>
 <td>Example: Seller</td>
-</tr>
-<tr>
-<td>cost_price</td>
-<td>Float(Optional)</td>
-<td>Example: 0.0</td>
 </tr>
 <tr>
 <td>expiration_date</td>
@@ -1182,7 +1187,7 @@ curl -X GET <span class="se">\</span>
         {
             "asin" : "B07G22S48Q", "quantity" : "10", "item_condition" : "like_new",
             "upc" : "0123456789", "sku" : "S123", "title" : "My product title",
-            "retail_price" : "10.00", "item_location" : "SHELF A - BIN 1",
+            "retail_price" : "10.00", "msrp_price": 20.00, "cost_price": 2.00, "item_location" : "SHELF A - BIN 1",
             "item_category" : "Clothing", "item_category_id" : "123", "item_remarks" : "Packaging is missing",
             "brand" : "Polo", "description" : "Green polo shirt", "features" : ['</span>Green<span class="s1">', '</span>Solid<span class="s1">'],
             "details_html" : "More details here",
@@ -1197,7 +1202,7 @@ curl -X GET <span class="se">\</span>
             "international_shipping_service_code" : "", "international_shipping_service_cost" : "",
             "extra_international_shipping_service_cost" : "", "international_ship_to_locations" : "", "international_rate_table" : "false",
             "return_in_days_value" : "30", "refund_policy_value" : "", "return_shipping_paid_by_value" : "",
-            "quantity_in_case" : "", "cost_price" : "2.00", "expiration_date" : "2020-10-30", "fnsku" : "", "image_urls" : ['</span>https://someurl.com<span class="s1">'], "external_ids" : [],
+            "quantity_in_case" : "", "expiration_date" : "2020-10-30", "fnsku" : "", "image_urls" : ['</span>https://someurl.com<span class="s1">'], "external_ids" : [],
             variant_listings: [
                 {
                     variant_sku: '</span>V1<span class="s1">', option1_name: '</span>Color<span class="s1">', option1_value: '</span>Red<span class="s1">', option2_name: '</span>Style<span class="s1">', option2_value: '</span>Solid<span class="s1">', asin: '</span>B00XX<span class="s1">', upc: '</span>12345<span class="s1">', quantity: 10, retail_price: 10.00, item_location: '</span>A1<span class="s1">'
@@ -1252,6 +1257,16 @@ curl -X GET <span class="se">\</span>
 <td>retail_price</td>
 <td>Float(Optional)</td>
 <td>Retail Price of the listing. Example: 9.99</td>
+</tr>
+<tr>
+<td>msrp_price</td>
+<td>Float (optional)</td>
+<td>Manufacturer Suggested Retail Price.  Example: 20.00</td>
+</tr>
+<tr>
+<td>cost_price</td>
+<td>Float (optional)</td>
+<td>Cost Price of the list.  Example: 3.00</td>
 </tr>
 <tr>
 <td>color</td>
@@ -1457,11 +1472,6 @@ curl -X GET <span class="se">\</span>
 <td>return_shipping_paid_by_value</td>
 <td>String(Optional)</td>
 <td>Example: Seller</td>
-</tr>
-<tr>
-<td>cost_price</td>
-<td>Float(Optional)</td>
-<td>Example: 0.0</td>
 </tr>
 <tr>
 <td>expiration_date</td>
@@ -1971,7 +1981,10 @@ curl -X GET <span class="se">\</span>
   -d <span class="s1">'{
     "product": {
         "title": "New Title",
-        "quantity_available": 2
+        "quantity_available": 2,
+        "retail_price": 10.00,
+        "cost_price": 3.00,
+        "msrp_price": 15.00
     }
 }'</span>
 
@@ -1998,6 +2011,16 @@ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span
 <td>retail_price</td>
 <td>Float</td>
 <td>Product&#39;s selling price</td>
+</tr>
+<tr>
+<td>cost_price</td>
+<td>Float</td>
+<td>Product&#39;s cost price</td>
+</tr>
+<tr>
+<td>msrp_price</td>
+<td>Float</td>
+<td>Product&#39;s MSRP</td>
 </tr>
 <tr>
 <td>quantity_available</td>
