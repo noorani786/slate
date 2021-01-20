@@ -1016,7 +1016,7 @@ Make sure to replace <span class="sb">`</span>YOUR-TOKEN<span class="sb">`</span
 
 <p>Url format:</p>
 
-<p>/api/manifests/MANIFEST_ID/product_listings?page=1&amp;page_size=20</p>
+<p>/api/manifests/MANIFEST_ID/product_listings?page=1&amp;page_size=20&amp;created_at=DATE</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl -X GET <span class="se">\</span>
   https://sellerchamp.com/api/manifests/5e6ec5a5584085af1800013d/product_listings?page<span class="o">=</span>1&amp;page_size<span class="o">=</span>20 <span class="se">\</span>
@@ -1039,6 +1039,11 @@ curl -X GET <span class="se">\</span>
             </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Style &amp; Co. Womens Louiza Low Top Slip On Fashion Sneakers, Navy, Size 8.5"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantity_listed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"retail_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"msrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"min_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"max_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cost_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.50</span><span class="p">,</span><span class="w">
             </span><span class="s2">"item_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"item_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"variant_listings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1150,6 +1155,11 @@ curl -X GET <span class="se">\</span>
             </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lego Scooby-Doo: Haunted Hollywood"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantity_listed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"retail_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"msrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"min_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"max_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cost_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.50</span><span class="p">,</span><span class="w">
             </span><span class="s2">"item_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"item_location"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"product_images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1765,7 +1775,11 @@ curl -X GET <span class="se">\</span>
             </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bethlehem Lights 8.5</span><span class="se">\"</span><span class="s2"> Metallic Scroll Aqua, Red,"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantity_available"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"quantity_listed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"retail_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"retail_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"msrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"min_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"max_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.00</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cost_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.00</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marketplace_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inactive"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"marketplace_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"item_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
@@ -1870,7 +1884,11 @@ curl -X GET <span class="se">\</span>
         </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bethlehem Lights 8.5</span><span class="se">\"</span><span class="s2"> Metallic Scroll Aqua, Red,"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"quantity_available"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"quantity_listed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"retail_price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"retail_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.00</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"msrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.00</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"min_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.00</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.00</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cost_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.00</span><span class="p">,</span><span class="w">
         </span><span class="s2">"marketplace_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inactive"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"marketplace_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"item_condition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new"</span><span class="p">,</span><span class="w">
