@@ -1071,7 +1071,9 @@ curl -X PUT \
         "quantity_available": 2,
         "retail_price": 10.00,
         "cost_price": 3.00,
-        "msrp_price": 15.00
+        "msrp_price": 15.00,
+        "fulfillment_provider_account_id: "5fdc7195e2d895171f9b87ae",
+        "fulfillment_provider_sku": "sku1"
     }
 }'
 
@@ -1088,6 +1090,8 @@ retail_price | Float | Product's selling price
 cost_price | Float | Product's cost price
 msrp_price | Float | Product's MSRP
 quantity_available | Integer | Product quantity available for purchase
+fulfillment_provider_account_id | String | The fulfillment_provider_account_id of product
+fulfillment_provider_sku | String | fulfillment_provider_sku for product
 
 
 ## DELETE product
@@ -1210,6 +1214,65 @@ curl -X DELETE \
 Make sure to replace `YOUR-TOKEN` with your API key token.
 ```
 
+# Product Inventory Location
+
+## GET product inventory_locations
+
+Returns back inventory_locations for a product
+
+Url format:
+
+/api/products/PRODUCT_ID/inventory_locations
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl -X GET \
+  https://sellerchamp.com/api/products/603e314ce2d89526fa8e46f4/inventory_locations \
+  -H 'token: YOUR-TOKEN' \
+
+ Make sure to replace `YOUR-TOKEN` with your API key token.
+```
+
+Returns back all the inventory_locations for a product.
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "inventory_locations": [
+        {
+            "id": "603e3bdae2d8955bd622340c",
+            "location": "test",
+            "quantity_available": 1,
+            "awaiting_pick": 0,
+            "priority": 1,
+            "delete_if_empty": true
+        }
+    ]
+}
+```
+
+## UPDATE product inventory location
+
+Updates the product inventory with the specified ID.
+
+Url format:
+
+/api/products/PRODUCT_ID/inventory_locations/INVENTORY_LOCATION_ID
+
+```shell
+curl -X PUT \
+  https://sellerchamp.com/api/products/603e314ce2d89526fa8e46f4/inventory_locations/603e3bdae2d8955bd622340c.json \
+  -H 'content-type: application/json' \
+  -H 'token: YOUR-TOKEN' \
+  -d '{
+    "inventory_location": {
+        "location": "New location"
+    }
+}'
+
+Make sure to replace `YOUR-TOKEN` with your API key token.
+```
 
 # Orders
 
@@ -1346,3 +1409,64 @@ Name | Data Type | Description
 id | String | The ID of the order to update
 tracking_number | String | The order's tracking number
 carrier_code | String | The carrier service used to ship the order (UPS, USPS, FedEx, etc.)
+
+## POST acknowledge order
+
+Acknowledge an order.
+
+URL format:
+
+/api/orders/ORDER_ID/acknowledge
+
+```shell
+curl --request POST \
+ --url https://sellerchamp.com/api/orders/{order_id}/acknowledge \
+ --header 'Content-Type: application/json' \
+ --header 'cache-control: no-cache,no-cache,no-cache' \
+ --header 'token: YOUR-TOKEN' \
+```
+
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "success": "Order has been successfully acknowledged."
+}
+```
+
+
+# Fulfillment Provider Accounts
+
+## GET fulfillment_provider_accountss
+
+Url format:
+
+/api/fulfillment_provider_accounts
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl -X GET \
+  https://sellerchamp.com/api/fulfillment_provider_accounts \
+  -H 'token: YOUR-TOKEN' \
+
+ Make sure to replace `YOUR-TOKEN` with your API key token.
+```
+
+Returns back all the fulfillment provider accounts.
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "fulfillment_provider_accounts": [
+        {
+            "id": "5fdb5232e2d895781866c93b",
+            "name": "MWS Orders",
+            "fulfillment_client_id": "",
+            "fulfillment_method": "FTP",
+            "url": "ftp.sellerchamp.com"
+        }
+    ]
+}
+```
